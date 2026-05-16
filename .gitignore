@@ -1,0 +1,6 @@
+# Local Environment Configuration
+.env
+
+# OS
+.DS_Store
+Thumbs.db

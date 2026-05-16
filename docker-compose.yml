@@ -1,0 +1,11 @@
+services:
+  gemini-cli-toolbox:
+    build: .
+    stdin_open: true
+    tty: true 
+
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+
+    volumes:
+      - "/path/to/projects:/projects"
