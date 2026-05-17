@@ -1,6 +1,8 @@
 services:
   gemini-cli-toolbox:
     build: .
+    # If variables are empty/unset, fallback to 1000:1000 (the standard 'node' user)
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
     stdin_open: true
     tty: true 
 
@@ -8,4 +10,8 @@ services:
       GEMINI_API_KEY: ${GEMINI_API_KEY}
 
     volumes:
-      - "/path/to/projects:/projects"
+      # - "/path/to/projects:/projects"
+
+    # Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true

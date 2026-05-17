@@ -80,6 +80,16 @@ This mapping allows the containerized Gemini CLI to read from and write directly
 ### Step 1: Start the Container Environment
 Run the following command to boot up your isolated container environment and access its bash terminal shell:
 
+#### For Linux Users
+On native Linux, you must pass your system's exact User and Group IDs so that files created by the container are owned by your host user:
+
+```bash
+HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm gemini-cli-toolbox
+```
+
+#### For macOS and Windows Users
+Docker Desktop automatically translates file permissions via its virtual file system layer. You do not need to pass any host IDs; simply run the standard command:
+
 ```bash
 docker compose run --rm gemini-cli-toolbox
 ```
